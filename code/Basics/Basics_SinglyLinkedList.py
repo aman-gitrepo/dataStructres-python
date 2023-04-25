@@ -38,16 +38,15 @@ class LinkedList:
     
     def printlist(self):
         current =  self.head
-        final = []
-        while current:
-            final = final.append(current.data)
+        outarr = [current.data]
+        while current.next:
             current = current.next
-        return final
+            outarr.append(current.data)
+        return outarr
     
     def insertAtBeginning(self,data):
         newNode = Node()
         newNode.setData(data)
-    
         if self.length == 0:
             self.head = newNode
         else:
@@ -58,19 +57,21 @@ class LinkedList:
     def insertAtEnd(self,data):
         newNode=Node()
         newNode.setData(data)
-        current = self.head
-        while current.getNext()!=None:
-            current = current.getNext()
-            current.setNext(newNode)
-            self.length+=1
+        currentNode = self.head
+        while currentNode.next != None :
+            currentNode = currentNode.next
+        currentNode.next = newNode
+        self.length+=1
 
 llist = LinkedList()
 llist.insertAtBeginning('aman1')
 llist.insertAtBeginning('aman2')
 llist.insertAtBeginning('aman3')
-
+llist.insertAtEnd('end0')
+llist.insertAtEnd('end1')
+llist.insertAtEnd('end2')
 
 llist.listLength()
-llist.printlist()
+print(llist.printlist())
 
-# print ([node.data for node in llist])
+print ([node.data for node in llist])
