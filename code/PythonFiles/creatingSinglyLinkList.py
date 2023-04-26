@@ -3,16 +3,11 @@ class Node():
         self.data = None
         self.next = None
 
-    def setData(self,Data):
-        self.data = Data
-    def getData(self):
-        return self.data
-    def setNext(self,Next):
-        self.next = Next
-    def getNext(self):
-        return self.next
-    def hasNext(self):
-        return self.next!=None
+    def setData(self,Data):self.data = Data
+    def getData(self):return self.data
+    def setNext(self,Next):self.next = Next
+    def getNext(self):return self.next
+    def hasNext(self):return self.next!=None
 
 class LinkedList():
     def __init__(self) -> None:
