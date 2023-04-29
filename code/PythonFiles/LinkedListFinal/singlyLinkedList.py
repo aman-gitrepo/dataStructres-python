@@ -56,6 +56,7 @@ class LinkedList:
         err_ = "loc index out of bound"
         if self.length < pos or pos < 0  : 
             print(err_)
+            return None
         elif pos == 0:
             self.insertAtBegining(Data)
             self.length+=1
@@ -71,3 +72,37 @@ class LinkedList:
             newNode.setNext(currentPointer.getNext())
             currentPointer.setNext(newNode)
             self.length+=1
+
+    def delAtBegin(self):
+        if self.length == 0:
+            print('LinkedList is empty')
+            return None
+        current = self.head
+        self.head = current.next
+        self.length-=1
+
+    def delAtEnd(self):
+        if self.length == 0:
+            return None
+        else:
+            current = self.head
+            count = 1
+            while count < self.length-1:
+                count+=1
+                current = current.next
+            current.setNext(None)
+            self.length-=1
+
+    def delAtPos(self,pos):
+        if self.length == 0:
+            return None
+        elif pos > self.length:
+            return None
+        else:
+            current = self.head
+            position = 1
+            while pos == position-1:
+                current = current.next
+            current.next
+
+    
