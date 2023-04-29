@@ -1,7 +1,6 @@
-import sys
-../LinkedListFinal/LinkedList
+import singlyLinkedList
 
-newLl = LinkedList.LinkedList()
+newLl = singlyLinkedList.LinkedList()
 
 newLl.insertAtBegining(0)
 newLl.insertAtBegining(1)
