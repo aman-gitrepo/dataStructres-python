@@ -115,11 +115,11 @@ class LinkedList:
             previous = current.next
         self.length-=1
     
-    def deleteWithValue(self,value):
+    def deleteWithValue(self,data):
         currentnode = self.head
         previousnode = self.head
-        while currentnode.next!=None or currentnode.data != value:
-            if currentnode.value == value:
+        while currentnode.next!=None or currentnode.data != data:
+            if currentnode.data == data:
                 previousnode =  currentnode.next
                 self.length -=1
                 return
@@ -132,33 +132,29 @@ class LinkedList:
         count = 0
         currentnode = self.head
         previousnode = self.head
-        if pos > self.length or pos <0:
+        print(pos, 'to be deleted')
+        ll1 = [ x.data for x in self]
+        if ll1:
+            print(ll1, 'is linked list befor deletion')
+        if pos > self.length or pos < 0:
             print('position does not exist within linked list')
+        elif pos == 0:
+            current = self.head
+            self.head = current.next
+            self.length-=1
         else:
-            while currentnode.hasNext() or count < pos:
-                count = count+1
+            print(pos, 'reached if block')
+            while currentnode.hasNext() or count <= pos:
+                print('count is ', count, 'reached while with pos',pos)
                 if count  == pos:
-                    previousnode = currentnode.next
+                    print(count, 'in count within while')
+                    previousnode.next = currentnode.next
+                    currentnode.next = None
                     self.length-=1
                     return
                 else:
                     previousnode = currentnode
                     currentnode  = currentnode.next
-
-
-
-                  
-
-    # def delAtPos(self,pos):
-    #     if self.length == 0:
-    #         return None
-    #     elif pos > self.length:
-    #         return None
-    #     else:
-    #         current = self.head
-    #         position = 1
-    #         while pos == position-1:
-    #             current = current.next
-    #         current.next
+                count = count+1 
 
     
