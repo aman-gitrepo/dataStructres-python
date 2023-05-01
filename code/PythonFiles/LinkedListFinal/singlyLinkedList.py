@@ -92,17 +92,73 @@ class LinkedList:
                 current = current.next
             current.setNext(None)
             self.length-=1
-
-    def delAtPos(self,pos):
-        if self.length == 0:
-            return None
-        elif pos > self.length:
-            return None
+    
+    def deleteFromLinkedListwithNode(self,node):
+        if self.length ==0:
+            raise ValueError('linkedList is Empty')
         else:
             current = self.head
-            position = 1
-            while pos == position-1:
-                current = current.next
-            current.next
+            previous = None
+            found =  False
+
+            while not found:
+                if current == node:
+                    found = True
+                elif current is None:
+                    raise ValueError('Node not in linked list')
+                else:
+                    previous = current
+                    current  = current.next
+        if previous is None:
+            self.head = current.next 
+        else:
+            previous = current.next
+        self.length-=1
+    
+    def deleteWithValue(self,value):
+        currentnode = self.head
+        previousnode = self.head
+        while currentnode.next!=None or currentnode.data != value:
+            if currentnode.value == value:
+                previousnode =  currentnode.next
+                self.length -=1
+                return
+            else:
+                previousnode = currentnode
+                currentnode = currentnode.next
+            print('value provided is not present')
+
+    def deleteAtPos(self,pos):
+        count = 0
+        currentnode = self.head
+        previousnode = self.head
+        if pos > self.length or pos <0:
+            print('position does not exist within linked list')
+        else:
+            while currentnode.hasNext() or count < pos:
+                count = count+1
+                if count  == pos:
+                    previousnode = currentnode.next
+                    self.length-=1
+                    return
+                else:
+                    previousnode = currentnode
+                    currentnode  = currentnode.next
+
+
+
+                  
+
+    # def delAtPos(self,pos):
+    #     if self.length == 0:
+    #         return None
+    #     elif pos > self.length:
+    #         return None
+    #     else:
+    #         current = self.head
+    #         position = 1
+    #         while pos == position-1:
+    #             current = current.next
+    #         current.next
 
     
