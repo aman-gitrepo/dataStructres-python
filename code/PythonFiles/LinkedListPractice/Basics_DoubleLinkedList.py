@@ -85,6 +85,31 @@ class DoublyLinkedList:
             self.tail = newNode
             self.length+=1
 
+    def insertAtPos(self,data,pos):
+        newNode = Node()
+        newNode.setData(data)
+        if pos <0 or pos > self.length:
+            return ValueError('this is invalid position')
+        elif pos == 0 :
+            self.insertAtBegining(data)
+            self.length+=1
+        elif pos == self.length-1:
+            self.insertAtEnd(data)
+            self.length+=1
+        else:
+            current  = self.head 
+            currentIndex = 0
+            while currentIndex < pos-1:
+                current = current.next
+                currentIndex+=1
+            print(current.getData())
+            nextToCurrent = current.getNext()
+            nextToCurrent.setPrev(newNode)
+            newNode.prev  = current
+            newNode.next = current.next
+            current.next = newNode
+            print(nextToCurrent.getPrev().data)
+
 
 new = DoublyLinkedList()
 new.insertAtBegining(1)
@@ -95,7 +120,8 @@ new.insertAtEnd(1000)
 ll = [x.data for x in new]
 print(ll)
 # print(new.getNode(1).getData())
-print(new.getNode(1))
-
-
+new.insertAtPos('testInsert',2)
+print(new.getNode(2).getData())
+ll = [x.data for x in new]
+print(ll)
     
