@@ -102,13 +102,35 @@ class DoublyLinkedList:
             while currentIndex < pos-1:
                 current = current.next
                 currentIndex+=1
-            print(current.getData())
+            # print(current.getData())
             nextToCurrent = current.getNext()
             nextToCurrent.setPrev(newNode)
             newNode.prev  = current
             newNode.next = current.next
             current.next = newNode
-            print(nextToCurrent.getPrev().data)
+            # print(nextToCurrent.getPrev().data)
+
+    def deleteAtIndex(self,index):
+        headNode = self.head
+        tailNode = self.tail
+        secondToTailNode = tailNode.prev
+        if index <0 and index>self.length:
+            return ValueError('errored cause ofindex not present')
+        elif index ==0:
+            self.head = self.head.next
+            self.length-=1
+        elif index == self.length-1:
+            tailNode.prev = None
+            secondToTailNode.next = None
+            self.tail = secondToTailNode
+            self.length-=1
+        else:
+            currentIndex = 1
+            while currentIndex <= index :
+                currentIndex += 1
+                headNode = headNode.next
+            headNode.prev.next = headNode.next
+            self.length-=1
 
 
 new = DoublyLinkedList()
@@ -124,4 +146,18 @@ new.insertAtPos('testInsert',2)
 print(new.getNode(2).getData())
 ll = [x.data for x in new]
 print(ll)
-    
+new.deleteAtIndex(new.length)
+ll = [x.data for x in new]
+print(ll)
+new.deleteAtIndex(new.length)
+ll = [x.data for x in new]
+print(ll)
+new.deleteAtIndex(new.length)
+ll = [x.data for x in new]
+print(ll)
+new.deleteAtIndex(new.length)
+ll = [x.data for x in new]
+print(ll)
+new.deleteAtIndex(new.length)
+ll = [x.data for x in new]
+print(ll)
